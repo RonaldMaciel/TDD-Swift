@@ -9,11 +9,15 @@ import UIKit
 
 class CalculatorBrain: NSObject {
     
-    func divideTwoNumbers(dividend: Int, divisor: Int) -> Float? {
+    func divideTwoNumbers(dividend: Int, divisor: Int, completionHandler: ((_ result: Float?, _ error: NSError?) -> Void)) {
+        
+        sleep(1)
+
         if divisor == 0 {
-            return nil
+            let error = NSError(domain: "Error dividing by Zero", code: 1)
+            return completionHandler(nil, error)
         }
-        return Float(dividend/divisor)
+        return completionHandler((Float(dividend/divisor)), nil)
     }
     
 }
