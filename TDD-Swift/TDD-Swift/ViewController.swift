@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     let calculatorBrain: CalculatorBrain = CalculatorBrain()
+    let calculatorOnline = OnlineCalculatorBrain()
     
     @IBOutlet weak var div1TextField: UITextField!
     @IBOutlet weak var div2TextField: UITextField!
@@ -17,7 +18,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        calculatorOnline.calculateWithTwoNumbers(dividend: 10, divisor: 2) { (result: Float?, error: NSError?) -> () in
+            print(error?.localizedDescription)
+            
+        }
     }
 
     @IBAction func calculateButton(_ sender: Any) {
